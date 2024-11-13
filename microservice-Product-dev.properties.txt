@@ -1,0 +1,13 @@
+logging.level.root=INFO
+logging.level.com.mcommerce.config.server=INFO
+logging.level.org.springframework.boot.web.embedded.tomcat=INFO
+
+#H2 Configuration
+spring.h2.console.enabled=true
+spring.datasource.username=admin
+spring.datasource.password=123
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.jpa.show-sql=true
+#spring.datasource.sql-script-encoding=UTF-8
+
+mes-configs.limitDeProduits= 3
