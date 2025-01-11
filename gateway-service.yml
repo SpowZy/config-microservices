@@ -1,0 +1,64 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+          routes:
+            - id: product-service
+              uri: lb://PRODUCT-SERVICE
+              predicates:
+                - Path=/products/**
+              filters:
+                - StripPrefix=1
+
+            - id: order-service
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/orders/**
+              filters:
+                - StripPrefix=1
+
+            - id: user-service
+              uri: lb://USER-SERVICE
+              predicates:
+                - Path=/users/**
+              filters:
+                - StripPrefix=1
+
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - Path=/payments/**
+              filters:
+                - StripPrefix=1
+
+            - id: recommendation-service
+              uri: lb://RECOMMENDATION-SERVICE
+              predicates:
+                - Path=/recommendations/**
+              filters:
+                - StripPrefix=1
+
+            - id: logistic-service
+              uri: lb://LOGISTIC-SERVICE
+              predicates:
+                - Path=/logistics/**
+              filters:
+                - StripPrefix=1
+
+            - id: batch-service
+              uri: lb://BATCH-SERVICE
+              predicates:
+                - Path=/batch/**
+              filters:
+                - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+# Configuration des routes du Gateway
